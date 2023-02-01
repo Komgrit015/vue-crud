@@ -8,34 +8,29 @@
     />
   </div>
 </template>
-<script>
-const columns = [
-  {
-    name: 'name',
-    required: true,
-    label: 'Dessert (100g serving)',
-    align: 'left',
-    field: row => row.name,
-    format: val => `${val}`,
-    sortable: true
-  },
-  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
-  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' },
-  { name: 'protein', label: 'Protein (g)', field: 'protein' },
-  { name: 'sodium', label: 'Sodium (mg)', field: 'sodium' },
-  { name: 'calcium', label: 'Calcium (%)', field: 'calcium', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-  { name: 'iron', label: 'Iron (%)', field: 'iron', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) }
-]
+<script setup>
 
-const rows = []
+import { ref } from 'vue'
 
-export default {
-  setup () {
-    return {
-      columns,
-      rows
-    }
-  }
+const columns = ref([
+  { name: 'id', align: 'left', label: 'id', field: 'id', sortable: true },
+  { name: 'fname', align: 'left', label: 'fname', field: 'fname', sortable: true },
+  { name: 'lname', align: 'left', label: 'lname', field: 'lname', sortable: true },
+  { name: 'username', align: 'left', label: 'username', field: 'username', sortable: true },
+  { name: 'avatar', align: 'center', label: 'avatar', field: 'avatar'},
+
+])
+
+const rows = ref([])
+
+const fetchData = () => {
+  fetch("https://www.melivecode.com/api/users")
+  .then(res => res.json())
+  .then((result) => {
+    rows.value = result
+  })
 }
+fetchData();
+
+
 </script>
