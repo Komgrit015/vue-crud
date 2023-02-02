@@ -3,7 +3,7 @@
         <q-form 
             @submit="onSubmit"
             class="q-gutter-md" 
-        >
+        > 
             <q-input v-model="id" label="ID" readonly />
             <q-input v-model="fname" label="First Name" />
             <q-input v-model="lname" label="Last Name" />
