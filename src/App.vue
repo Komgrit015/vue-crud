@@ -13,6 +13,7 @@ import { RouterView } from 'vue-router'
         </q-toolbar-title>
         <q-tabs>
           <q-route-tab to="/" label="Home" />
+          <q-route-tab to="/create" label="Create" />
           <q-route-tab to="/about" label="About" />
         </q-tabs>
       </q-toolbar>
